@@ -116,6 +116,5 @@ public class homework3 {
         }
         System.out.println(Arrays.toString(arr7));
         System.out.print(task7(arr7));
-
     }
 }
