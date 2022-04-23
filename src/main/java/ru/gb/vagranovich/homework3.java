@@ -1,6 +1,8 @@
 package ru.gb.vagranovich;
 
 import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
 
 public class homework3 {
 
@@ -37,11 +39,38 @@ public class homework3 {
         System.out.println(Arrays.toString(arr));
     }
 
+    public static void task4() {
+        int l = new Random().nextInt(10)+1;
+        int [][] arr = new int[l][l];
+        System.out.println(l);
+        for (int i = 0; i < l; i++) {
+           arr[i][i] = 1;
+           arr[i][l-i-1] = 1;
+           System.out.println(Arrays.toString(arr[i]));
+        }
+    }
+
+    public static int [] task5(int len, int initialValue) {
+        int [] arr = new int [len];
+        for (int i = 0; i < len; i++) {
+            arr[i] = initialValue;
+        }
+        return arr;
+    }
+
 
     public static void main(String[] args) {
         task1();
         task2();
         task3();
+        task4();
+
+        Scanner scanner = new Scanner(System.in);
+        int l = scanner.nextInt();
+        int iValue = scanner.nextInt();
+        int [] arr5 = task5(l,iValue);
+        System.out.println(Arrays.toString(arr5));
+        scanner.close();
     }
 
 }
