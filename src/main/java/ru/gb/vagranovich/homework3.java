@@ -1,5 +1,6 @@
 package ru.gb.vagranovich;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -66,23 +67,38 @@ public class homework3 {
         max = -2147483648;
         for (int i = 0; i < l; i++) {
             arr[i] = new Random().nextInt(1000);
-            if (arr[i]>max) {
-                max = arr [i];
-            } else if (arr[i]<min) {
-                min = arr [i];
+            if (arr[i] > max) {
+                max = arr[i];
+            } else if (arr[i] < min) {
+                min = arr[i];
             }
         }
         System.out.println(Arrays.toString(arr));
-        System.out.println("Max = " + max+"; " + "Min = "+ min +";");
+        System.out.println("Max = " + max + "; " + "Min = " + min + ";");
     }
 
+    public static boolean task7(int[] arr) {
+        int leftSum = 0;
+        int rightSum;
+        int i = 0;
+        do {
+            rightSum = 0;
+            leftSum = leftSum + arr[i];
+            for (int j = i + 1; j < arr.length; j++) {
+                rightSum = rightSum + arr[j];
+            }
+            i++;
+        } while ((leftSum < rightSum) && (i < arr.length));
+        //System.out.println("LeftSum = " + leftSum + "; " + "RightSum = " + rightSum + ";");
+        return (leftSum == rightSum);
+    }
 
     public static void main(String[] args) {
         task1();
         task2();
         task3();
         task4();
-        // исполнение задания №5
+        //  задание №5
         Scanner scanner = new Scanner(System.in);
         int l = scanner.nextInt();
         int iValue = scanner.nextInt();
@@ -92,6 +108,14 @@ public class homework3 {
 
         task6();
 
-    }
+        //  задание №7
+        l=10;
+        int[] arr7 = new int[l];
+        for (int i = 0; i < l; i++) {
+            arr7[i] = new Random().nextInt(10);
+        }
+        System.out.println(Arrays.toString(arr7));
+        System.out.print(task7(arr7));
 
+    }
 }
