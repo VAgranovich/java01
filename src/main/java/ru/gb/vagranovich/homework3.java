@@ -40,22 +40,40 @@ public class homework3 {
     }
 
     public static void task4() {
-        int l = new Random().nextInt(10)+1;
-        int [][] arr = new int[l][l];
+        int l = new Random().nextInt(10) + 1;
+        int[][] arr = new int[l][l];
         System.out.println(l);
         for (int i = 0; i < l; i++) {
-           arr[i][i] = 1;
-           arr[i][l-i-1] = 1;
-           System.out.println(Arrays.toString(arr[i]));
+            arr[i][i] = 1;
+            arr[i][l - i - 1] = 1;
+            System.out.println(Arrays.toString(arr[i]));
         }
     }
 
-    public static int [] task5(int len, int initialValue) {
-        int [] arr = new int [len];
+    public static int[] task5(int len, int initialValue) {
+        int[] arr = new int[len];
         for (int i = 0; i < len; i++) {
             arr[i] = initialValue;
         }
         return arr;
+    }
+
+    public static void task6() {
+        int l = new Random().nextInt(10) + 1;
+        int max, min;
+        int[] arr = new int[l];
+        min = 2147483647;
+        max = -2147483648;
+        for (int i = 0; i < l; i++) {
+            arr[i] = new Random().nextInt(1000);
+            if (arr[i]>max) {
+                max = arr [i];
+            } else if (arr[i]<min) {
+                min = arr [i];
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+        System.out.println("Max = " + max+"; " + "Min = "+ min +";");
     }
 
 
@@ -64,12 +82,16 @@ public class homework3 {
         task2();
         task3();
         task4();
+        // исполнение задания №5
         Scanner scanner = new Scanner(System.in);
         int l = scanner.nextInt();
         int iValue = scanner.nextInt();
-        int [] arr5 = task5(l,iValue);
+        int[] arr5 = task5(l, iValue);
         System.out.println(Arrays.toString(arr5));
         scanner.close();
+
+        task6();
+
     }
 
 }
