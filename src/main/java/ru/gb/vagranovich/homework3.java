@@ -64,7 +64,6 @@ public class homework3 {
         task2();
         task3();
         task4();
-
         Scanner scanner = new Scanner(System.in);
         int l = scanner.nextInt();
         int iValue = scanner.nextInt();
