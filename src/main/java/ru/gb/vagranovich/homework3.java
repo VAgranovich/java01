@@ -89,7 +89,7 @@ public class homework3 {
             }
             i++;
         } while ((leftSum < rightSum) && (i < arr.length));
-        //System.out.println("LeftSum = " + leftSum + "; " + "RightSum = " + rightSum + ";");
+        System.out.println("LeftSum = " + leftSum + "; " + "RightSum = " + rightSum + ";");
         return (leftSum == rightSum);
     }
 
@@ -112,7 +112,7 @@ public class homework3 {
         l=10;
         int[] arr7 = new int[l];
         for (int i = 0; i < l; i++) {
-            arr7[i] = new Random().nextInt(10);
+            arr7[i] = new Random().nextInt(3);
         }
         System.out.println(Arrays.toString(arr7));
         System.out.print(task7(arr7));
