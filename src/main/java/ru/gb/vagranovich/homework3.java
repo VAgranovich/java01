@@ -1,6 +1,5 @@
 package ru.gb.vagranovich;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -69,7 +68,8 @@ public class homework3 {
             arr[i] = new Random().nextInt(1000);
             if (arr[i] > max) {
                 max = arr[i];
-            } else if (arr[i] < min) {
+            }
+            if (arr[i] < min) {
                 min = arr[i];
             }
         }
@@ -83,14 +83,56 @@ public class homework3 {
         int i = 0;
         do {
             rightSum = 0;
-            leftSum = leftSum + arr[i];
+            leftSum += arr[i];
             for (int j = i + 1; j < arr.length; j++) {
-                rightSum = rightSum + arr[j];
+                rightSum += arr[j];
             }
             i++;
         } while ((leftSum < rightSum) && (i < arr.length));
         System.out.println("LeftSum = " + leftSum + "; " + "RightSum = " + rightSum + ";");
         return (leftSum == rightSum);
+    }
+
+    public static int[] task8(int[] arr, int rot) {
+        int t1, t2, index;
+
+        if (rot < 0) {
+            index = -1;
+        } else {
+            index = 1;
+        }
+
+        for (int i = 0; i < rot * index; i++) {
+            t1 = arr[arr.length - 1];
+            t2 = arr[0];
+            if (index == 1) {
+                for (int j = 0; j < arr.length - 1; j++) {
+                    arr[j] = t1;
+                    t1 = arr[j + 1];
+                    arr[j + 1] = t2;
+
+                    t1 = t1 + t2;
+                    t2 = t1 - t2;
+                    t1 = t1 - t2;
+                }
+            }
+            else {
+                for (int j=arr.length-1; j > 0; j--) {
+                    arr[j] = t2;
+                    t2 = arr[j-1];
+                    arr[j-1] = t1;
+
+                    t1 = t1 + t2;
+                    t2 = t1 - t2;
+                    t1 = t1 - t2;
+                }
+
+            }
+
+
+        }
+
+        return arr;
     }
 
     public static void main(String[] args) {
@@ -109,12 +151,20 @@ public class homework3 {
         task6();
 
         //  задание №7
-        l=10;
+        l = 10;
         int[] arr7 = new int[l];
         for (int i = 0; i < l; i++) {
             arr7[i] = new Random().nextInt(3);
         }
         System.out.println(Arrays.toString(arr7));
-        System.out.print(task7(arr7));
+        System.out.println(task7(arr7));
+
+        // задание №8
+        int[] arr8 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int rot8 = new Random().nextInt(21) - 10;
+        System.out.println("Исходный массив: " + Arrays.toString(arr8));
+        System.out.println("Количество позиций для сдвига элементов массива: " + rot8);
+        System.out.println("Итоговый массив: " + Arrays.toString(task8(arr8, rot8)));
+
     }
 }
