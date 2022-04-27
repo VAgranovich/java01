@@ -30,7 +30,31 @@ public class Homework4 {
         if (isWin) {
             System.out.println("Поздравляю!\nВы выиграли!");
         } else {
-            System.out.println("БАБАХ!!!\nВы проиграли!");
+            System.out.println("БУ-БУМ!!!\nВы проиграли!");
+        }
+    }
+
+    //показать поле при проигрыше
+    private static void showBoard(int[][] board) {
+        System.out.print("   ");
+        for (char i = 'A'; i < 'A' + WIDTH; i++) {
+            System.out.print(" " + i);
+        }
+        System.out.println();
+        for (int i = 0; i < HEIGHT; i++) {
+            System.out.printf("%3d", i);
+            for (int j = 0; j < WIDTH; j++) {
+                String cellColor = getColorCode(board[i][j]);
+                System.out.print(cellColor);
+                if (isMine(board[i][j])) {
+                    System.out.print(" *");
+                } else {
+                    System.out.print(ANSI_RESET);
+                    System.out.print(" .");
+                }
+                System.out.print(ANSI_RESET);
+            }
+            System.out.println();
         }
     }
 
@@ -43,6 +67,11 @@ public class Homework4 {
             isPassMove = move(board, moves);
             win = isWin(moves);
         } while (isPassMove && !win);
+
+        //показать поле при проигрыше
+        if (!isPassMove) {
+            showBoard(board);
+        }
 
         return isPassMove;
     }
@@ -60,7 +89,7 @@ public class Homework4 {
     }
 
     private static boolean move(final int[][] board, final int[][] moves) {
-        final Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         printBoard(board, moves);
         while (true) {
             System.out.print("Ваш ход (строка, столбец, флаг, например А1*): ");
@@ -82,7 +111,7 @@ public class Homework4 {
         }
     }
 
-    private static void printBoard(final int[][] board, final int[][] moves) {
+    private static void printBoard(int[][] board, int[][] moves) {
         System.out.print("   ");
         for (char i = 'A'; i < 'A' + WIDTH; i++) {
             System.out.print(" " + i);
