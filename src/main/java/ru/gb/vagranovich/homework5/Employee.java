@@ -16,16 +16,20 @@ public class Employee {
         this.salary = salary;
         this.age = age;
 
+    }
 
+    public int getAge() {
+        return this.age;
     }
 
     public void showEmployee() {
+        System.out.println();
         System.out.println("ФИО       : " + this.fio);
-        System.out.println("Должность : " + this.position);
+        System.out.println("должность : " + this.position);
         System.out.println("email     : " + this.email);
         System.out.println("телефон   : " + this.phone);
-        System.out.println("Зарплата  : " + this.salary + "руб.");
-        System.out.println("Возраст   : " + this.age + "лет");
+        System.out.println("зарплата  : " + this.salary + " руб.");
+        System.out.println("возраст   : " + this.age + " лет");
     }
 
 }
