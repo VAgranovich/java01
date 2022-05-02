@@ -20,12 +20,12 @@ public class Employee {
     }
 
     public void showEmployee() {
-        System.out.println("ФИО " + this.fio);
-        System.out.println("Должность " + this.position);
-        System.out.println("email " + this.email);
-        System.out.println("телефон " + this.phone);
-        System.out.println("Зарплата " + this.salary);
-        System.out.println("Возраст " + this.age);
+        System.out.println("ФИО       : " + this.fio);
+        System.out.println("Должность : " + this.position);
+        System.out.println("email     : " + this.email);
+        System.out.println("телефон   : " + this.phone);
+        System.out.println("Зарплата  : " + this.salary + "руб.");
+        System.out.println("Возраст   : " + this.age + "лет");
     }
 
 }
