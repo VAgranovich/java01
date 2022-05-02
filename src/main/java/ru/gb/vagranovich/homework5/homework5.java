@@ -14,7 +14,6 @@ public class homework5 {
             if (emplArray[i].getAge() > 40) {
                 emplArray[i].showEmployee();
             }
-
         }
     }
 }
