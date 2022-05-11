@@ -2,17 +2,18 @@ package ru.gb.vagranovich.homework6;
 
 public class Animal {
     private String name;
-    private int runLimit;
-    private int swimLimit;
-    protected int animalCount = 0;
+    protected int runLimit = 0;
+    protected int swimLimit = 0;
+    protected static int animalCount = 0;
 
 
     public Animal(String name) {
         this.name = name;
+        animalCount ++;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -20,7 +21,7 @@ public class Animal {
     }
 
     public void animalInfo() {
-        System.out.println("Кличка животного: " + name);
+        System.out.println("Кличка животного: " + this.name);
     }
 
     public void run(int distance) {
