@@ -14,6 +14,7 @@ public class Plate {
     public void decreaseFood(int n) {
         if (food >= n) {
             food -= n;
+            lackOfFood=false;
         } else {
             lackOfFood = true;
         }

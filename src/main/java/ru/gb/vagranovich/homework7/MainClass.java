@@ -3,13 +3,13 @@ package ru.gb.vagranovich.homework7;
 public class MainClass {
     public static void main(String[] args) {
         Cat cat = new Cat("Barsik", 5);
-        Plate plate = new Plate(22);
+        Plate plate = new Plate(5);
 
         Cat[] cat1 = {
                 new Cat("Барсик", 3),
                 new Cat("Перси", 5),
-                new Cat("Мурзик", 7),
-                new Cat("Пушок", 9)
+                new Cat("Мурзик", 1),
+                new Cat("Пушок", 1)
         };
 
         // Работаем с одним котом
