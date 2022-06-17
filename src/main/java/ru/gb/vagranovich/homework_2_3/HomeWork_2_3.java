@@ -7,10 +7,12 @@ public class HomeWork_2_3 {
     public static void main(String[] args) {
 
         //задание №1
-       array();
+        System.out.println("Задание №1");
+        array();
 
-       //задание №2
-       phonelist();
+        //задание №2
+        System.out.println("Задание №2");
+        phonelist();
 
     }
 
@@ -73,26 +75,27 @@ public class HomeWork_2_3 {
     }
 
 }
-    class Directory {
-        private HashMap<String, List<String>> directory = new HashMap<>();
-        private List<String> phone_number_list;
 
-        public void add(String surname, String phone_number) {
-            if (directory.containsKey(surname)) {
-                phone_number_list = directory.get(surname);
-                phone_number_list.add(phone_number);
-                directory.put(surname, phone_number_list);
-            } else {
-                phone_number_list = new ArrayList<>();
-                phone_number_list.add(phone_number);
-                directory.put(surname, phone_number_list);
-            }
+class Directory {
+    private final HashMap<String, List<String>> directory = new HashMap<>();
+
+    public void add(String surname, String phone_number) {
+        List<String> phone_number_list;
+        if (directory.containsKey(surname)) {
+            phone_number_list = directory.get(surname);
+            phone_number_list.add(phone_number);
+            directory.put(surname, phone_number_list);
+        } else {
+            phone_number_list = new ArrayList<>();
+            phone_number_list.add(phone_number);
+            directory.put(surname, phone_number_list);
         }
-
-        public List<String> get(String surname) {
-            return directory.get(surname);
-        }
-
     }
+
+    public List<String> get(String surname) {
+        return directory.get(surname);
+    }
+
+}
 
 
