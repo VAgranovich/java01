@@ -32,7 +32,7 @@ public class EchoClient {
                     closeConnection();
                     break;
                 }
-                
+
             }
         } catch (IOException | InterruptedException | IllegalStateException e) {
             // e.printStackTrace();

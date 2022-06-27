@@ -93,6 +93,7 @@ public class EchoServer {
 
     private static void closeConnection() {
         try {
+
             in.close();
             out.close();
             serverSocket.close();
