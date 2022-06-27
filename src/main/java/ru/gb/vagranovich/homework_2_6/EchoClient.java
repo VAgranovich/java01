@@ -32,9 +32,10 @@ public class EchoClient {
                     closeConnection();
                     break;
                 }
+                
             }
-        } catch (IOException | InterruptedException e) {
-           // e.printStackTrace();
+        } catch (IOException | InterruptedException | IllegalStateException e) {
+            // e.printStackTrace();
         }
 
     }

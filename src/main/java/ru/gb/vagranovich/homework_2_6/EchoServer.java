@@ -13,12 +13,14 @@ public class EchoServer {
     private static DataInputStream in;
     private static DataOutputStream out;
     private static Scanner scanner;
+    static boolean status = true;
 
     public static void main(String[] args) {
 
         try {
             serverSocket = new ServerSocket(8189);
             System.out.println("Ждем подключения клиента...");
+
             final Socket socket = serverSocket.accept();
             System.out.println("Клиент подключился");
 
@@ -31,48 +33,60 @@ public class EchoServer {
                     String message;
                     try {
                         scanner = new Scanner(System.in);
-                        while (true) {
+                        while (status) {
                             message = scanner.nextLine();
                             sendMessage(message);
                             if (message.equalsIgnoreCase("/end")) {
-                                closeConnection();
-                                break;
+                                status = false;
+                                scanner.close();
                             }
                         }
+
                     } catch (Exception e) {
-                       // e.printStackTrace();
+                        // e.printStackTrace();
                     }
 
                 }
             });
             thread.start();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
-            while (true) {
+            while (status) {
                 final String message_srv = in.readUTF();
                 System.out.println("Сообщение от клиента: " + message_srv);
-                out.writeUTF(message_srv);
+
                 if (message_srv.equalsIgnoreCase("/end")) {
-                    closeConnection();
-                    break;
+                    status = false;
+                } else {
+                    out.writeUTF(message_srv);
                 }
 
             }
-            return;
+
+            //closeConnection();
         } catch (IOException e) {
             //e.printStackTrace();
         }
+
+        try {
+            closeConnection();
+        } catch (Exception e) {
+            // e.printStackTrace();
+        }
+
         System.out.println("Сервер отключен");
+
     }
 
     private static void sendMessage(String message) {
         try {
             out.writeUTF(message);
         } catch (IOException e) {
-          //  e.printStackTrace();
+            //  e.printStackTrace();
         }
 
     }
@@ -83,6 +97,7 @@ public class EchoServer {
             out.close();
             serverSocket.close();
             scanner.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
